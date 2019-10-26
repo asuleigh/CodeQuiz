@@ -9,5 +9,11 @@ var questions = [
     choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
     answer: "parentheses"
   },
+  {
+    title: "Arrays in JavaScript can be used to store ____.",
+    choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
+    answer: "all of the above"
+  },
+
   ///etc.
 ];
