@@ -1,19 +1,32 @@
-var questions = [
-  {
-    title: "Commonly used data types DO NOT include:",
-    choices: ["strings", "booleans", "alerts", "numbers"],
-    answer: "alerts"
-  },
-  {
-    title: "The condition in an if / else statement is enclosed within ____.",
-    choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-    answer: "parentheses"
-  },
-  {
-    title: "Arrays in JavaScript can be used to store ____.",
-    choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
-    answer: "all of the above"
-  },
 
-  ///etc.
-];
+//Create variables for buttons, questions, and choices
+var startButton = document.getElementById("start");
+var questionHead = document.getElementById("question");
+var resultsList = document.getElementById("answers");
+
+//add events for buttons, questions, and choices
+startButton.addEventListener("click", function (event){
+    document.getElementById("startPage").classList.add("d-none");
+    document.getElementById("qaPage").classList.remove("d-none");
+
+    questionHead.textContent = question [0].title;
+    resultsList.innerHTML = "";
+
+    var choices = question[0].choices;
+
+for (var i = 0; i < choices.length; i++) {
+    var nextChoice = document.createElement("div");
+    nextChoice.textContent = choices[i];
+    resultsList.appendChild(nextChoice);
+}
+});
+
+function startQuiz() {
+    c = 60;
+    disappear001.innerHTML = "";
+    // message001.innerHTML = question001[0];
+    // message002.innerHTML = options001;
+    // number001.innerHTML = a++;
+}
+
+

@@ -16,7 +16,7 @@
 
     <nav class = "p-2 mb-5 bg-light">
         <a href = "highScores.html">View Highscores</a>
-        <span class= "float-right">Time: 0</span>
+        <span class= "float-right" id="timer">Time: 0</span>
     </nav>
 
     <div id = "startPage" class = "container bg-light p-4">
@@ -24,7 +24,9 @@
         <div class = "col-8 text-center">
             <h1 class = "text-info">Coding Quiz Challenge</h1>
             <p class = "text-secondary">Welcome to the Coding Quiz Challenge! In this quiz, you will be asked a scope of questions about HTML, CSS, and JavaScript. This quiz is timed. Once the quiz begins, the timer will start. Additionally, any questions answered incorrectly will subtract five seconds from the total time. You only get one chance to answer each question, so be sure to try your best at answering the question the first time! The quiz ends when you are finished or the timer reaches zero, then you will be given a score. Feel free to use any resources necessary to complete the quiz. Good luck!</p>
-            <button id="start" class="btn btn-info mt-3">Start Quiz</button>
+            <div id="dissapear">
+            <button id="start" class="btn btn-info mt-3" onclick="startQuiz()">Start Quiz</button>
+            </div>
         </div>
         </div>
         </div>
@@ -35,7 +37,7 @@
         <div class = "col-8">
             <h2 id = "question" class= "text-info"></h2>
             <ul id= "answers" class= "text-secondary">
-              <li>AnswerPlaceholder</li>
+              <li class="btn" style="background-color:blueviolet; color: white;">AnswerPlaceholder</li>
               <li>AnswerPlaceholder</li>
               <li>AnswerPlaceholder</li>
             </ul>
@@ -50,7 +52,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     
     <!-- Link to questions.js & script.js-->
-    <script src="questions.js"></script>
-    <script src="script.js"></script>  
+    <script src="Assets\js\questions.js"></script>
+    <script src="Assets\js\script.js"></script>  
   </body>
 </html>
