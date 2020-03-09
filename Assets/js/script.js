@@ -3,7 +3,7 @@ var startButton = document.getElementById("start");
 var questionHead = document.getElementById("question");
 var resultsList = document.getElementById("answers");
 var quizTime = document.getElementById("timer");
-var countdown = (question.length * 20 + 1);
+var countdown = (question.length * 5 + 1);
 var questionArray = -1;
 var questionNum = 0;
 
@@ -31,6 +31,8 @@ function startQuizTime() {
             clearInterval(quizTimer);
             setTimeout(finalScore, 1000);
         }
+        
+        finished();
     }, 1000);
 };
 
@@ -52,6 +54,7 @@ function loadQuestions() {
         answerButton = resultsList.appendChild(nextChoice)
         .setAttribute("class", "btn btn-sm btn-info btn-block w-25");
     };
+    finished();
 };
 
 // Get answers and check user's choices for correctness. Set timeout for display message
@@ -61,7 +64,7 @@ resultsList.addEventListener("click", function (event) {
 // If the answer is correct, render the message "correct!" and move to the next question/end
     if (answer === event.target.textContent) {   
         choice.innerHTML = `<hr>` + `<div style="font-style:italic; font-weight:bold; 
-        color: #27a7b3;">` + "Correct!" + `</div>`
+        color: #27a7b3;">` + "Correct!" + `</div>`;
 
         setTimeout(stashResults,1000);
         getResults();   
@@ -69,9 +72,10 @@ resultsList.addEventListener("click", function (event) {
     
 // If the answer is incorrect, subtract 5 seconds from total time
     else {
-        choice.innerHTML = "Sorry, that's incorrect.";
+        choice.innerHTML =`<hr>` + `<div style="font-style:italic; font-weight:bold; 
+        color: #27a7b3;">` + "Sorry, that's incorrect." + `</div>`;
         countdown = countdown - 5;
-        score = score - 10;
+        // score = score - 10;
 
         setTimeout(stashResults,1000);
         getResults();
@@ -79,6 +83,7 @@ resultsList.addEventListener("click", function (event) {
 
 // Load next question
     loadQuestions();
+    finished();
 });
 
 // Get results after answering question
@@ -86,6 +91,7 @@ function getResults() {
     var choice= document.getElementsByClassName("results")[0];
 
     choice.removeAttribute("style");
+    finished();
 };
 
 // Stash results after answering question
@@ -93,14 +99,17 @@ function stashResults() {
     var choice= document.getElementsByClassName("results")[0];
 
     choice.style.display="none";
+    finished();
 };
 
-function quizOver() {
-    if (questionNum >= 10 || countdown <= 0) {
+// Checks to see if out of question loop or timer has finished and sends user 
+// to score page for their final score
+function finished() {
+    if (questionNum >= 3 || countdown <= 0) {
       document.getElementById("qaPage").classList.add("d-none");
-    //   document.getElementById("finished").classList.remove("d-none");
+      document.getElementById("finalPage").classList.remove("d-none");
       document.getElementById("quizTime").innerHTML = countdown + "seconds left";
-    //   document.getElementById("finalScore").innerHTML = countdown;
+      document.getElementById("finalScore").innerHTML = countdown;
   
       clearInterval(quizTime);
     }
