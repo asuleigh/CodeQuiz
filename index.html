@@ -16,16 +16,20 @@
 
     <nav class = "p-2 mb-5 bg-light">
         <a href = "highScores.html">View Highscores</a>
-        <span class= "float-right" id="timer">Time: 0</span>
+        <text class= "float-right" id = "begTime">Time: 60</text> 
+        <text class= "float-right" id="timer"></text>
     </nav>
 
     <div id = "startPage" class = "container bg-light p-4">
         <div class = "row justify-content-center">
         <div class = "col-8 text-center">
             <h1 class = "text-info">Coding Quiz Challenge</h1>
-            <p class = "text-secondary">Welcome to the Coding Quiz Challenge! In this quiz, you will be asked a scope of questions about HTML, CSS, and JavaScript. This quiz is timed. Once the quiz begins, the timer will start. Additionally, any questions answered incorrectly will subtract five seconds from the total time. You only get one chance to answer each question, so be sure to try your best at answering the question the first time! The quiz ends when you are finished or the timer reaches zero, then you will be given a score. Feel free to use any resources necessary to complete the quiz. Good luck!</p>
+            <p class = "text-secondary">Welcome to the Coding Quiz Challenge! In this quiz, you will be asked a scope of questions about HTML, CSS, and JavaScript. 
+              Once the quiz begins, a 60 second timer will start. Any questions answered incorrectly will subtract 5 seconds from the total time. 
+              You only get one chance to answer each question. The quiz ends when you are finished or the timer reaches zero, then you will be given a score. 
+              Feel free to use any resources necessary to complete the quiz. Happy Coding!</p>
             <div id="dissapear">
-            <button id="start" class="btn btn-info mt-3" onclick="startQuiz()">Start Quiz</button>
+            <button id="start" class="btn btn-info mt-3">Start Quiz</button>
             </div>
         </div>
         </div>
@@ -36,18 +40,20 @@
         <div class = "row justify-content-center">
         <div class = "col-8">
             <h2 id = "question" class= "text-info"></h2>
-            <ul id= "answers" class= "text-secondary">
-              <li class="btn" style="background-color:blueviolet; color: white;">AnswerPlaceholder</li>
-              <li>AnswerPlaceholder</li>
-              <li>AnswerPlaceholder</li>
+            <ul id= "answers" class= "list-unstyled text-secondary">
+              <li class="results">A: </li>
+              <li class="results">B: </li>
+              <li class="results">C: </li>
+              <li class="results">D: </li>
             </ul>
+            <p class="results"></p>
         </div>
         </div>
         </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     
