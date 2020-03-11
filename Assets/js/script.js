@@ -115,68 +115,28 @@ function finished() {
     };
   };
 
-// Get Score and Initials Submit button
-document.getElementById("scoreSubmit").addEventListener("click", submitScore);
+// Add event for submit button on index finalScore page
+scoreSubmit.addEventListener("click", function (event) {
+event.stopPropagation();
+saveScore();
 
-// Create function for submitting score and initials to localStorage for
-// rendering on the highScores page
-function submitScore() {
-  var userInitials = document.querySelector("#initialsValue").value;
-  var userScore = countdown;
-
- // Object that holds initials and scores
-  var scoreOb = { initials: userInitials, score: userScore };
-
-// Gets the list rendering area for the scores in highScores
-  var userScoreList = localStorage.getItem("storedScoreList");
-
-  if (userScoreList == null) {
-    localStorage.setItem("storedScoreList", JSON.stringify([scoreOb]));
-    console.log(storedScoreList);
-  }  else {
-    storedScoreList = JSON.parse(userScoreList);
-    console.log(typeof storedScoreList);
-    storedScoreList.push(scoreOb);
-    localStorage.setItem("storedScoreList", JSON.stringify(storedScoreList));
-  };
-};
-
-// Gets the scores to show on highScores page
-function showScores() {
-    var scoreContainer = document.getElementById("userScoreOb");
-
-    var savedScores = localStorage.getItem("userScore");
-    if (savedScores == null) {
-        document.getElementById("setUserScore").remove();
-        return;
-    }
-
-    savedScores = JSON.parse(savedScores);
-    console.log("list", savedScores);
-    console.log(scoreContainer);
-
-    //Variable that creates the ordered list to store the user initials and high score
-    var scoreList = document.createElement("ol");
-    scoreList.setAttribute("id", "setUserScore");
-    for (var i = 0; i < savedScores.length; i++) {
-        var highScores = document.createElement("li");
-        highScores.setAttribute(
-            "class",
-            "list-group-item list-group-item-success"
-        );
-        highScores.innerHTML =
-            savedScores[i].initials + " " + savedScores[i].score;
-
-        scoreList.appendChild(highScores);
-    }
-    scoreContainer.appendChild(scoreList);
-}
-showScores();
-
-//This code allows the user to clear the local storage once the quiz is finished
-var clearButton = document.querySelector("#clear-storage");
-clearButton.addEventListener("click", function () {
-    localStorage.removeItem("userScore");
-
-    showScores();
+window.location.href = './highScores.html'
 });
+
+// Function for getting and storing user initials and scores 
+// for the highScores page
+function saveScore () {
+    userInitials = document.getElementById("initialsValue").value
+    
+var userScore = {
+        initials: userInitials,
+        score: countdown
+    };
+
+    var userScoreList = JSON.parse(localStorage.getItem("userScoreList") || "[]");
+
+    userScoreList.push(userScore)
+
+    localStorage.setItem("userScoreList", JSON.stringify(userScoreList));
+
+};
