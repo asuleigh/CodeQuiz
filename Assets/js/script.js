@@ -3,9 +3,12 @@ var startButton = document.getElementById("start");
 var questionHead = document.getElementById("question");
 var resultsList = document.getElementById("answers");
 var quizTime = document.getElementById("timer");
+var score = document.getElementById("finalScore");
+
 var countdown = (question.length * 5 + 1);
 var questionArray = -1;
 var questionNum = 0;
+var time;
 
 // Starts quiz and loads start and questions page
 startButton.addEventListener("click", startQuiz);
@@ -17,24 +20,19 @@ function startQuiz() {
 
     startQuizTime();
     loadQuestions();
+    time = setInterval(startQuizTime, 1000);
 };
 
-// Creates and sets a timer for the quiz
+// Creates and sets a timer for the quiz. Clears timer interval when finished
 function startQuizTime() {
-    
-    var quizTimer = setInterval(function () {
-        countdown--;
-        quizTime.textContent = "Time: " + countdown;
+    countdown--;
+    quizTime.textContent = "Time: " + countdown;
 
-// Timeout the quiz if done with questions/timer
-        if (countdown === 0 || questionArray === questions.length) {
-            clearInterval(quizTimer);
-            setTimeout(finalScore, 1000);
+    if (countdown == -1) {
+        clearInterval(time);
         }
-        
         finished();
-    }, 1000);
-};
+    };
 
 // Grab question array and load into respective divs on question page; Style buttons with setAttribute
 // This function renders the multiple-choice options on the HTML page as buttons
@@ -64,7 +62,7 @@ resultsList.addEventListener("click", function (event) {
 // If the answer is correct, render the message "correct!" and move to the next question/end
     if (answer === event.target.textContent) {   
         choice.innerHTML = `<hr>` + `<div style="font-style:italic; font-weight:bold; 
-        color: #27a7b3;">` + "Correct!" + `</div>`;
+        color: #27a7b3;">` + "Correct" + `</div>`;
 
         setTimeout(stashResults,1000);
         getResults();   
@@ -73,7 +71,7 @@ resultsList.addEventListener("click", function (event) {
 // If the answer is incorrect, subtract 5 seconds from total time
     else {
         choice.innerHTML =`<hr>` + `<div style="font-style:italic; font-weight:bold; 
-        color: #27a7b3;">` + "Sorry, that's incorrect." + `</div>`;
+        color: #27a7b3;">` + "Incorrect" + `</div>`;
         countdown = countdown - 5;
         // score = score - 10;
 
@@ -103,14 +101,39 @@ function stashResults() {
 };
 
 // Checks to see if out of question loop or timer has finished and sends user 
-// to score page for their final score
+// to score page for their final score. Clears timer interval when finished
 function finished() {
-    if (questionNum >= 3 || countdown <= 0) {
+    if (questionArray >= 3 || countdown <= 0) {
       document.getElementById("qaPage").classList.add("d-none");
       document.getElementById("finalPage").classList.remove("d-none");
-      document.getElementById("quizTime").innerHTML = countdown + "seconds left";
       document.getElementById("finalScore").innerHTML = countdown;
+      
+      score.textContent = countdown;
   
-      clearInterval(quizTime);
-    }
+      clearInterval(time);
+    };
   };
+
+// //Event listener to fire the function that allows the user to save their initial and high score
+// document.getElementById("initials-button").addEventListener("click", saveScore);
+
+//Function for saving high score and initial
+// function saveScore() {
+//   var userInitials = document.querySelector("#initial-input").value;
+//   var finalScore = countDown;
+
+//   //Object stores intitials and high scores
+//   var scoreObject = { initials: userInitials, score: finalScore };
+
+//   var highScores = localStorage.getItem("highScoreList");
+
+//   if (highScores == null) {
+//     localStorage.setItem("highScoreList", JSON.stringify([scoreObject]));
+//     console.log(highScores);
+//   } else {
+//     highScoreList = JSON.parse(highScores);
+//     console.log(typeof highScoreList);
+//     highScoreList.push(scoreObject);
+//     localStorage.setItem("highScoreList", JSON.stringify(highScoreList));
+//   }
+// }
