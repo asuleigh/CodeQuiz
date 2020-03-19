@@ -6,10 +6,11 @@ var quizTime = document.getElementById("timer");
 var score = document.getElementById("finalScore");
 var scoreButton = document.getElementById("scoreSubmit")
 
-var countdown = (question.length * 5 + 1);
+var countdown = (question.length * 20 + 1);
 var questionArray = -1;
 var questionNum = 0;
 var time;
+// var mySound;
 
 // Starts quiz and loads start and questions page
 startButton.addEventListener("click", startQuiz);
@@ -18,9 +19,12 @@ function startQuiz() {
     document.getElementById("startPage").classList.add("d-none");
     document.getElementById("begTime").classList.add("d-none");
     document.getElementById("qaPage").classList.remove("d-none");
+    
+    // mySound= new sound("Assets\sounds\correct.wav");
 
     startQuizTime();
     loadQuestions();
+    
     time = setInterval(startQuizTime, 1000);
 };
 
@@ -67,6 +71,7 @@ resultsList.addEventListener("click", function (event) {
 
         setTimeout(stashResults,1000);
         getResults();   
+        // mySound.play();
     } 
     
 // If the answer is incorrect, subtract 5 seconds from total time
@@ -115,12 +120,16 @@ function finished() {
     };
   };
 
+
+
 // Add event for submit button on index finalScore page
 scoreSubmit.addEventListener("click", function (event) {
-event.stopPropagation();
-saveScore();
+    event.stopPropagation();
+    saveScore();
 
-window.location.href = './highScores.html'
+    console.log(localStorage);
+
+    window.location.href = './highScores.html'
 });
 
 // Function for getting and storing user initials and scores 
@@ -128,16 +137,107 @@ window.location.href = './highScores.html'
 function saveScore () {
     userInitials = document.getElementById("initialsValue").value
     
-var userScore = {
-        initials: userInitials,
-        score: countdown
-    };
+    var userScore = {
+            initials: userInitials,
+            score: countdown
+        };
 
     var userScoreList = JSON.parse(localStorage.getItem("userScoreList") || "[]");
 
     userScoreList.push(userScore)
 
     localStorage.setItem("userScoreList", JSON.stringify(userScoreList));
-
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function pushHighScores() {
+//     var userScoreDiv = document.getElementById(
+//       "userScoreOb"
+//     );
+
+//     var storedHighScores = localStorage.getItem("userScoreList");
+//     if (storedHighScores == null) {
+//       document.getElementById("scoreList").remove();
+//       return;
+//     }
+
+//     storedHighScores = JSON.parse(storedHighScores);
+//     console.log("list", storedHighScores);
+//     console.log(userScoreDiv);
+
+//     //Variable that creates the ordered list to store the user initials and high score
+//     var containerList = document.createElement("ol");
+//     containerList.setAttribute("id", "scoreList");
+//     for (var i = 0; i < storedHighScores.length; i++) {
+//       var highScore = document.createElement("li");
+//       highScore.setAttribute(
+//         "class",
+//         "list-group-item list-group-item-success"
+//       );
+//       highScore.innerHTML =
+//         storedHighScores[i].initials + " " + storedHighScores[i].score;
+
+//       containerList.appendChild(highScore);
+//     }
+//     userScoreDiv.appendChild(containerList);
+//   }
+//   renderHighScores();
+
+//   //This code allows the user to clear the local storage once the quiz is finished
+//   var clearButton = document.querySelector("#clear-storage");
+//   clearButton.addEventListener("click", function() {
+//     localStorage.removeItem("highScoreList");
+
+//     pushHighScores();
+//   });
+
+// var restartButton = document.querySelector("button.restartButton"),
+//     clearButton = document.querySelector("button.clearButton"),
+
+//     // get the highScores list and turn it back into an object
+//     userScoreList = JSON.parse(localStorage.getItem("userScoreList") || "[]"),
+//     scoreOb = document.getElementById("userScoreOb");
+
+//     // sort scores from high to low
+//     userScoreList.sort(function (a,b){
+//         return b.score - a.score
+//     })
+
+//     // display the scores
+//     for (var s = 0; s < userScoreList.length; s++) {
+//         var nextList= document.createElement("li")
+//         nextList.textContent = userScoreList[s].initials + " - " + userScoreList[s].score
+//         scoreOb.appendChild(nextList)
+//     }
+
+
+// // click handlers for restart and clearing scoreboard
+// clearButton.addEventListener("click", function () {
+//     localStorage.clear();
+//     history.back()
+// });
+// restartButton.addEventListener("click", function () {
+//     history.back();
+// });
 
