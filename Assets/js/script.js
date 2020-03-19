@@ -79,7 +79,6 @@ resultsList.addEventListener("click", function (event) {
         choice.innerHTML =`<hr>` + `<div style="font-style:italic; font-weight:bold; 
         color: #27a7b3;">` + "Incorrect" + `</div>`;
         countdown = countdown - 5;
-        // score = score - 10;
 
         setTimeout(stashResults,1000);
         getResults();
