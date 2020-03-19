@@ -6,7 +6,11 @@ LINKS: https://asuleigh.github.io/CodeQuiz/; https://github.com/asuleigh/CodeQui
 
 LINKS TO SCREENSHOTS:
 
+<hr>
+
 ABSTRACT: This is a fun coding themed quiz that runs on simple Javascript. The quiz has 10 questions, is timed, and uses localStorage to keep track of high scores.
+
+<hr>
 
 Table of Contents:
 
