@@ -6,7 +6,7 @@ var quizTime = document.getElementById("timer");
 var score = document.getElementById("finalScore");
 var scoreButton = document.getElementById("scoreSubmit")
 
-var countdown = (question.length * 20 + 1);
+var countdown = (question.length * 10 + 1);
 var questionArray = -1;
 var questionNum = 0;
 var time;
@@ -108,7 +108,7 @@ function stashResults() {
 // Checks to see if out of question loop or timer has finished and sends user 
 // to score page for their final score. Clears timer interval when finished
 function finished() {
-    if (questionArray >= 3 || countdown <= 0) {
+    if (questionArray >= 10 || countdown <= 0) {
       document.getElementById("qaPage").classList.add("d-none");
       document.getElementById("finalPage").classList.remove("d-none");
       document.getElementById("finalScore").innerHTML = countdown;
