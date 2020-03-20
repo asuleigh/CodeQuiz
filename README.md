@@ -1,10 +1,10 @@
-# CodeQuiz
-Timed coding quiz project that is useful for study
+# JS Code Quiz
+Timed coding themed quiz made with simple javascript 
 <hr>
 
 LINKS: https://asuleigh.github.io/CodeQuiz/; https://github.com/asuleigh/CodeQuiz
 
-LINKS TO SCREENSHOTS:
+GIF: [](C:\Users\asule\Desktop\Coding\Bootcamp\Assignments\CodeQuiz\Assets\gif\quizGIF.gif)
 
 <hr>
 
@@ -31,3 +31,4 @@ iii: CREDITS -https://www.toptal.com/designers/subtlepatterns/ -https://w3school
 iv: LICENSE GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
 
 Copyright (C) 2007 Free Software Foundation, Inc. https://fsf.org/ Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.
+<hr>

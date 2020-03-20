@@ -126,7 +126,7 @@ scoreSubmit.addEventListener("click", function (event) {
     event.stopPropagation();
     saveScore();
 
-    console.log(localStorage);
+    // console.log(localStorage);
 
     window.location.href = './highScores.html'
 });

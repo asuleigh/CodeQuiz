@@ -9,18 +9,23 @@
     <title>High Scores</title>
 
   </head>
-  <!-- Body for high score page-->
-  <body style = "background-image:url(./Assets/images/prism.png)">
 
-    <div class = "container bg-light p-4">
-        <div class = "row justify-content-center">
-        <div class = "col-8 text-center">
-          <!-- PLACE CODE FOR SCORES HERE-->
-          <h1 id="scorePage"> 
+  <!-- Body for High Score page-->
+  <body style= "background-image:url(./Assets/images/prism.png)">
+
+    <div class= "container bg-light p-4">
+        <div class= "row justify-content-center">
+        <div class= "col-8">
+          <h1 id="scorePage" class="text-info text-center"> 
           High Scores 
           </h1>
           <hr>
-          <ol id="userScoreOb"></ol>
+
+          <!-- List area where the scores are rendered -->
+          <ol id="userScoreOb" class= "container bg-light p-4" 
+          style="font-weight:bold; color: #27a7b3;"></ol>
+
+          <!-- Buttons for restarting the quiz or clearing the scores -->
           <button id="startOver" class="startOverButton btn btn-info mt-3">Try Again</button>
           <button id="clear" class="clearButton btn btn-info mt-3">Clear Scores</button>
         </div>

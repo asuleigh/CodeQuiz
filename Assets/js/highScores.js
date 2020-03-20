@@ -18,17 +18,18 @@ newUserScoreList.sort(function (a,b){
 // displayed, and appends the scores to the list section on the highScores page
 for (var n = 0; n < newUserScoreList.length; n++) {
     var nextList= document.createElement("li")
-    nextList.textContent = newUserScoreList[n].initials + " - " + newUserScoreList[n].score
+    nextList.innerHTML = `<div style="font-weight:bold; color: #27a7b3;">` 
+    + newUserScoreList[n].initials + " : " + newUserScoreList[n].score + `</div>`
     scoreOb.appendChild(nextList)
 };
 
 // Checking localStorage
-console.log(localStorage);
+// console.log(localStorage);
 
 // Click functions for clearing localStorage and restarting the quiz
 clearButton.addEventListener("click", function () {
     localStorage.clear();
-    history.back()
+    window.location.href = './highScores.html'
 });
 startOverButton.addEventListener("click", function () {
     history.back();
