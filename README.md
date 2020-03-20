@@ -4,7 +4,7 @@ Timed coding themed quiz made with simple javascript
 
 LINKS: https://asuleigh.github.io/CodeQuiz/; https://github.com/asuleigh/CodeQuiz
 
-GIF: [](C:\Users\asule\Desktop\Coding\Bootcamp\Assignments\CodeQuiz\Assets\gif\quizGIF.gif)
+GIF: [](quizGIF.gif)
 
 <hr>
 
